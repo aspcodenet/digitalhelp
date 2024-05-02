@@ -1,4 +1,6 @@
 <?php 
+require_once('Pages/layout/sideNavStudent.php');
+
 function layout_sidenav($dbContext)  {
 ?>  
 <input type="checkbox" id="active">
@@ -51,13 +53,9 @@ function layout_sidenav($dbContext)  {
                     <span class="sidebar-text"> Admin bla bla</span>
                 </a>
             </li>
-            <li class="line-split"></li>
-            <li>
-                <a href="/student"  >
-                    <span class="sidebar-icon"><i class="fas fa-calendar"></i></span>
-                    <span class="sidebar-text"> Student bla bla</span>
-                </a>
-            </li>
+
+            <?php sidenavStudent($dbContext);?>
+
             <li class="line-split"></li>
             <li>
                 <a href="/public"  >

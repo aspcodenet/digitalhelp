@@ -15,6 +15,11 @@ $pageSize = $_GET['pageSize'] ?? "20";
 $dbContext = new DBContext();
 
 
+if ($dbContext->getUsersDatabase()->getAuth()->hasRole(DigitalHelpRoles::STUDENT) === false) {
+    die('Ej behörig');
+}
+
+
 
 // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 // $mail->isSMTP();

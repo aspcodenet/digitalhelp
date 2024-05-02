@@ -20,6 +20,7 @@ class DBContext{
         $dsn = "mysql:host=$this->host;dbname=$this->db";
         $this->pdo = new PDO($dsn, $this->user, $this->pass);
         $this->usersDatabase = new UserDatabase($this->pdo);
+        $this->usersDatabase->setupUsers();
         //$this->initIfNotInitialized();
         //$this->seedfNotSeeded();
     }

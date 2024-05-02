@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require_once('Models/DigitalHelpRoles.php');
 
 class UserDatabase {
     private $pdo;
@@ -95,12 +96,12 @@ class UserDatabase {
     function seedUsers(){
         if($this->pdo->query("select * from users where email='stefan.holmberg@systementor.se'")->rowCount() == 0){
             $userId = $this->auth->admin()->createUser("stefan.holmberg@systementor.se", "Hejsan123#", "stefan.holmberg@systementor.se");    
-            $this->auth->admin()->addRoleForUserById($userId, \Delight\Auth\Role::ADMIN);
+            $this->auth->admin()->addRoleForUserById($userId, DigitalHelpRoles::TEACHER );
         }
 
         if($this->pdo->query("select * from users where email='oliver@systementor.se'")->rowCount() == 0){
             $userId = $this->auth->admin()->createUser("oliver@systementor.se", "Hejsan123#", "oliver@systementor.se");    
-            $this->auth->admin()->addRoleForUserById($userId, \Delight\Auth\Role::CONSUMER);
+            $this->auth->admin()->addRoleForUserById($userId, DigitalHelpRoles::STUDENT);
         }
 
     }
